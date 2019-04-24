@@ -1,19 +1,14 @@
-/*    */ package Project1;
-/*    */ 
-/*    */ public class VideoTape extends Video
-/*    */ {
-/*    */   public VideoTape(String title, int year, double runningTime)
-/*    */   {
-/* 13 */     super(title, year, runningTime);
-/*    */   }
-/*    */ 
-/*    */   public String getType()
-/*    */   {
-/* 18 */     return super.getType() + " Tape";
-/*    */   }
-/*    */ }
+package Project1;
 
-/* Location:           C:\Users\Jaxyral\Documents\workspace Eclipse\CIS 212\src\
- * Qualified Name:     Project1.VideoTape
- * JD-Core Version:    0.6.0
- */
+public class VideoTape extends Video
+{
+        public VideoTape(String title, int year, double runningTime)
+        {
+                super(title, year, runningTime);
+        }
+
+        public String getType()
+        {
+                return super.getType() + " Tape";
+        }
+}

@@ -3,80 +3,80 @@ import java.util.*;
 
 
 public class PasswordList {
-	private String fileName;
-	private Vector<Password> passVector = new Vector<Password>();
+        private String fileName;
+        private Vector<Password> passVector = new Vector<Password>();
 
-	public PasswordList(String filename){
-		this.fileName = filename;
+        public PasswordList(String filename){
+                this.fileName = filename;
 
-		try{
-			FileInputStream fileStream = new FileInputStream(fileName);
-			DataInputStream dataStream = new DataInputStream(fileStream);
-			BufferedReader bReader = new BufferedReader(new InputStreamReader(dataStream));
+                try{
+                        FileInputStream fileStream = new FileInputStream(fileName);
+                        DataInputStream dataStream = new DataInputStream(fileStream);
+                        BufferedReader bReader = new BufferedReader(new InputStreamReader(dataStream));
 
-			String currentLine;
+                        String currentLine;
 
-			while ( ( currentLine = bReader.readLine() ) != null){
+                        while ( ( currentLine = bReader.readLine() ) != null) {
 
-				String[] temp = currentLine.split(" ");
-				passVector.addElement(new Password(temp[0], temp[1]));
+                                String[] temp = currentLine.split(" ");
+                                passVector.addElement(new Password(temp[0], temp[1]));
 
-			}
+                        }
 
-		}catch (Exception e){
-			System.err.println("Error Caught: " + e);
-			e.printStackTrace();
-		} //CLOSE TRY BLOCK
-
-
-	} //CLOSE CONSTRUCTOR
+                }catch (Exception e) {
+                        System.err.println("Error Caught: " + e);
+                        e.printStackTrace();
+                } //CLOSE TRY BLOCK
 
 
-	public String getPasswordBySequentialSearch(String name){
+        } //CLOSE CONSTRUCTOR
 
-		Iterator<Password> itr = passVector.iterator();
 
-		while (itr.hasNext()){
-			Password currentPass = itr.next();
+        public String getPasswordBySequentialSearch(String name){
 
-			if (currentPass.getName().equals(name)){
-				return currentPass.getPassword();
-			}else
-				continue;
-		}
+                Iterator<Password> itr = passVector.iterator();
 
-		return "Password Not Found.";
-	}
+                while (itr.hasNext()) {
+                        Password currentPass = itr.next();
 
-	public String getPasswordByBinarySearch(String name){
+                        if (currentPass.getName().equals(name)) {
+                                return currentPass.getPassword();
+                        }else
+                                continue;
+                }
 
-		int index = binarySearch(new Password(name, null));
+                return "Password Not Found.";
+        }
 
-		if (index < 0){
-			return "Password Not Found.";
-		}else
-			return passVector.elementAt(index).getPassword();
+        public String getPasswordByBinarySearch(String name){
 
-	}
+                int index = binarySearch(new Password(name, null));
 
-	public int binarySearch(Password name){
-		int first = 0;
-		int last = passVector.size();
+                if (index < 0) {
+                        return "Password Not Found.";
+                }else
+                        return passVector.elementAt(index).getPassword();
 
-		while(first < last){
+        }
 
-			int middle = (first + last) / 2;
+        public int binarySearch(Password name){
+                int first = 0;
+                int last = passVector.size();
 
-			if (name.compareTo(passVector.elementAt(middle)) < 0){
-				last = middle;
-			}else if (name.compareTo(passVector.elementAt(middle)) > 0){
-				first = middle + 1;
-			}else{
-				return middle;
-			}
-		}
-		return -(first + 1);
-	}
+                while(first < last) {
+
+                        int middle = (first + last) / 2;
+
+                        if (name.compareTo(passVector.elementAt(middle)) < 0) {
+                                last = middle;
+                        }else if (name.compareTo(passVector.elementAt(middle)) > 0) {
+                                first = middle + 1;
+                        }else{
+                                return middle;
+                        }
+                }
+                return -(first + 1);
+        }
 
 
 }
