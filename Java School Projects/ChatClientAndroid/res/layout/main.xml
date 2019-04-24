@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:gravity="fill_horizontal" >
+    <EditText
+        android:id="@+id/textRoom"
+        android:layout_width="fill_parent"
+        android:lines="4"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine" 
+        android:editable="false"
+        android:focusable="false"
+        >
+    </EditText>
+    
+    <EditText
+        android:id="@+id/chatInput"
+        android:layout_width="fill_parent"
+        android:maxLines="3"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/textRoom"
+        >
+    </EditText>
+    
+    <Button
+        android:id="@+id/chatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@+id/chatInput"
+        android:text="Chat"
+        android:onClick="sendButtonClicked" />
+    />
+    
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@+id/chatInput"
+		android:layout_toRightOf="@+id/chatButton"
+        android:text="Exit" 
+        android:onClick="exitButtonClicked" />
+    />
+        
+
+</RelativeLayout>

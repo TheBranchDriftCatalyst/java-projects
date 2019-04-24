@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android Chat Client</string>
+    <string name="vm_ip">10.0.2.2</string>
+	
+</resources>
